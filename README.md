@@ -79,7 +79,8 @@
   **Implantação com Render.com:**
   
    A aplicação pode ser implantada na plataforma **[Render.com](https://render.com/)**, que permite construir, implantar e escalar aplicações com facilidade, de forma gratuita ou paga, dependendo da demanda.
-  ![image](https://github.com/user-attachments/assets/810c75b1-2a66-4a3b-b8f6-fb7063db1cab)
+  ![407177973-810c75b1-2a66-4a3b-b8f6-fb7063db1cab](https://github.com/user-attachments/assets/383f2421-38da-4cb7-91fd-dc7fc6fd0229)
+
 
 
 
