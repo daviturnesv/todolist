@@ -52,15 +52,24 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public TaskModel update(@RequestBody TaskModel taskModel, @PathVariable UUID id,  HttpServletRequest request){
-        var idUser = request.getAttribute("idUser");
+    public ResponseEntity update(@RequestBody TaskModel taskModel, @PathVariable UUID id,  HttpServletRequest request){
 
         var tarefa = this.taskRepository.findById(id).orElse(null);
 
+        if (tarefa == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Tarefa nao encontrada");
+        }
+        
+        var idUser = request.getAttribute("idUser");
+
+        if(!tarefa.getIdUser().equals(idUser)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuario nao tem permissao para alterar essa tarefa");
+        }
+
         Utils.copyNonNullPorperties(taskModel, tarefa);
 
-
-        return this.taskRepository.save(tarefa);
+        var tarefaAtualizada = this.taskRepository.save(tarefa);
+        return ResponseEntity.ok().body(this.taskRepository.save(tarefaAtualizada));
     }
 
 }
